@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Reactive;
 
 //using Autofac;
 
 using Translator.Kernel;
+using System.Reactive.Linq;
+using System.Threading;
 
 namespace TranslatorWpf
 {
+
     public partial class App : Application
     {
         //public IContainer DI { get; private set; }
-        public WordRepo repo { get; private set; }
+        public WordRepo repo { get; private set; } = new WordRepo();
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            this.repo = new WordRepo();
+            TranslatorWindow window;
+            window = new TranslatorWindow(new TranslatorViewModel());
 
             Task.Run(repo.getWords)
                 .ContinueWith(tsk =>
@@ -30,23 +36,12 @@ namespace TranslatorWpf
                     {
                         Singleton.Words.Add(word.English, word.Chinese);
                     }
-                });
+                })
+                .ToObservable()
+                .ObserveOn(SynchronizationContext.Current)
+                .Subscribe(new ReadyGo(window));
 
-            //var builder = new ContainerBuilder();
-
-            //builder.RegisterInstance(repo).As<WordRepo>();
-            //builder.RegisterType<TranslatorViewModel>();
-            //builder.RegisterType<TranslatorWindow>();
-            //builder.RegisterType<WordWindow>();
-
-            //this.DI = builder.Build();
-
-            //using (var scope = this.DI.BeginLifetimeScope())
-            //{
-            var window = new TranslatorWindow(new TranslatorViewModel());
-            window.btnPaste.IsEnabled = true;
             window.Show();
-            //}
         }
 
 

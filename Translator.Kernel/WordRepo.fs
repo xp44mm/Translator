@@ -10,7 +10,7 @@ type WordRepo() =
         use db = new TranslateContext()
         db.Words.AsNoTracking()
             .ToArrayAsync()
-
+            
     ///仅测试使用
     member _.getWords() =
         use db = new TranslateContext()

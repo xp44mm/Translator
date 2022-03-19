@@ -24,15 +24,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <!--命令按钮-->
         <ToolBar Grid.Row="0">
-            <Button x:Name="btnPaste"  Click="Paste_Click">粘贴</Button>
+            <Button x:Name="btnPaste" Click="Paste_Click" IsEnabled="False">粘贴</Button>
             <Button Click="modifyDict_Click">编辑词典</Button>
-            <!--<Button Click="divide_Click">断开短语</Button>-->
-            <!--<Button Click="Button_Click">测试</Button>-->
         </ToolBar>
-        
+
         <!--句子列表-->
         <ListBox Grid.Row="1"
                  HorizontalContentAlignment="Stretch"
@@ -67,11 +65,11 @@
 
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        
+
         </ListBox>
 
         <GridSplitter  Grid.Row="2" />
-        
+
         <local:SentanceUserControl Grid.Row="3"
                                    DataContext ="{Binding ElementName=lstSentances, Path=SelectedItem}"
                                    x:Name="sentanceControl"/>
