@@ -5,13 +5,7 @@ open Translator.ef
 
 ///操作数据库的类型
 type WordRepo() =
-           
-    static member getWordsAsync() =
-        use db = new TranslateContext()
-        db.Words.AsNoTracking()
-            .ToArrayAsync()
             
-    ///仅测试使用
     member _.getWords() =
         use db = new TranslateContext()
         db.Words.AsNoTracking()
