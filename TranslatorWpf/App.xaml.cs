@@ -17,7 +17,6 @@ namespace TranslatorWpf
         //public IContainer DI { get; private set; }
         public WordRepo repo { get; private set; }
 
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

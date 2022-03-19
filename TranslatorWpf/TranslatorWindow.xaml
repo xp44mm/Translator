@@ -29,8 +29,8 @@
         <ToolBar Grid.Row="0">
             <Button x:Name="btnPaste"  Click="Paste_Click">粘贴</Button>
             <Button Click="modifyDict_Click">编辑词典</Button>
-            <Button Click="divide_Click">断开短语</Button>
-            <Button Click="Button_Click">测试</Button>
+            <!--<Button Click="divide_Click">断开短语</Button>-->
+            <!--<Button Click="Button_Click">测试</Button>-->
         </ToolBar>
         
         <!--句子列表-->

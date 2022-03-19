@@ -66,23 +66,6 @@ namespace TranslatorWpf
             //}
         }
 
-        private void divide_Click(Object sender, RoutedEventArgs e)
-        {
-            if (this.sentanceControl.lstPhrases.SelectedItem is PhraseItem phraseItem)
-            {
-                var dlg = new TokensWindow
-                {
-                    DataContext = phraseItem.Phrase.Tokens,
-                    Owner = this
-                };
-
-                if (dlg.ShowDialog().Value)
-                {
-                    this.translateSelectedSetance(force: true);
-                }
-            }
-        }
-
         private void translateSelectedSetance(bool force = false)
         {
             var sentance = (SentanceViewModel)this.lstSentances.SelectedItem;
@@ -115,11 +98,12 @@ namespace TranslatorWpf
             }
         }
 
-        private void Button_Click(Object sender, RoutedEventArgs e)
-        {
-            var dictionary = Singleton.Words;
-            MessageBox.Show($"{dictionary.Count}");
-        }
+        //private void Button_Click(Object sender, RoutedEventArgs e)
+        //{
+        //    var dictionary = Singleton.Words;
+        //    MessageBox.Show($"{dictionary.Count}");
+        //}
+
         //end class
     }
 }
