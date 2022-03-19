@@ -5,8 +5,6 @@ open System.Collections.Generic
 
 type WordDictionary()   =
     inherit Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-    //let dic = Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-    //member _.Dictionary = dic
 
     /// 新增或修改词条
     member dic.update(english,chinese) =

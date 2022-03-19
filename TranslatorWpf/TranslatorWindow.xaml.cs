@@ -3,15 +3,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-using Autofac;
+//using Autofac;
 
 using Translator.Kernel;
 
 namespace TranslatorWpf
 {
-    /// <summary>
-    /// TranslatorWindow.xaml 的交互逻辑
-    /// </summary>
     public partial class TranslatorWindow : Window
     {
         public TranslatorWindow(TranslatorViewModel vm)
@@ -20,14 +17,13 @@ namespace TranslatorWpf
             this.DataContext = vm;
         }
 
-        //粘贴文本
         private void Paste_Click(Object sender, RoutedEventArgs e)
         {
             var text = this.GetTextFromClipboard();
             var essay = new Translator.Kernel.Essay(text);
 
             var vm = (TranslatorViewModel)this.DataContext;
-            vm.Sentances = // TranslatorViewModel.getSentances(text);
+            vm.Sentances =
                 essay.Sentances
                 .Select(sent => new SentanceViewModel(sent.Tokens, sent.Text))
                 .ToArray();
@@ -38,7 +34,6 @@ namespace TranslatorWpf
             }
         }
 
-        //句子切换当前
         private void lstSentances_SelectionChanged(Object sender, SelectionChangedEventArgs e)
         {
             try
@@ -53,22 +48,22 @@ namespace TranslatorWpf
 
         private void modifyDict_Click(Object sender, RoutedEventArgs e)
         {
-            using (var scope = ((App)Application.Current).DI.BeginLifetimeScope())
-            {
-                var dlg = scope.Resolve<WordWindow>();
-                dlg.Owner = this;
-                dlg.InitialText(this.sentanceControl.SelectedPhrase());
+            //using (var scope = ((App)Application.Current).DI.BeginLifetimeScope())
+            //{
+            var dlg = new WordWindow(((App)Application.Current).repo);
+            dlg.Owner = this;
+            dlg.InitialText(this.sentanceControl.SelectedPhrase());
 
-                if (dlg.ShowDialog().Value)
+            if (dlg.ShowDialog().Value)
+            {
+                var vm = (TranslatorViewModel)this.DataContext;
+                foreach (var sent in vm.Sentances)
                 {
-                    var vm = (TranslatorViewModel)this.DataContext;
-                    foreach (var sent in vm.Sentances)
-                    {
-                        sent.Updated = false;
-                    }
-                    this.translateSelectedSetance();
+                    sent.Updated = false;
                 }
+                this.translateSelectedSetance();
             }
+            //}
         }
 
         private void divide_Click(Object sender, RoutedEventArgs e)
@@ -93,16 +88,6 @@ namespace TranslatorWpf
             var sentance = (SentanceViewModel)this.lstSentances.SelectedItem;
             if (sentance != null && (!sentance.Updated || force))
             {
-
-
-                //using (var scope = ((App)Application.Current).DI.BeginLifetimeScope())
-                //{
-                //    var dictionary = scope.Resolve<WordDictionary>();
-
-                //    var olds = Translation.keepSelection(sentance.PhraseItems);
-                //    sentance.PhraseItems = Translation.Update(dictionary, sentance.Tokens, olds);
-                //}
-
                 var dictionary = Singleton.Words;
                 var olds = Translation.keepSelection(sentance.PhraseItems);
                 sentance.PhraseItems = Translation.Update(dictionary, sentance.Tokens, olds);
@@ -132,15 +117,9 @@ namespace TranslatorWpf
 
         private void Button_Click(Object sender, RoutedEventArgs e)
         {
-            //using (var scope = ((App)Application.Current).DI.BeginLifetimeScope())
-            //{
-            //    var dictionary = scope.Resolve<WordDictionary>();
-            //    MessageBox.Show($"{dictionary.Count}");
-            //}
-
             var dictionary = Singleton.Words;
             MessageBox.Show($"{dictionary.Count}");
-
         }
+        //end class
     }
 }

@@ -7,6 +7,7 @@ namespace TranslatorWpf
 {
     static class Singleton
     {
+        // 数据库源的内存表示
         public readonly static WordDictionary Words = new WordDictionary();
     }
 }

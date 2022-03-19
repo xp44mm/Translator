@@ -34,18 +34,3 @@ module WordOperators =
         else
             dic.update(eng,chn)
         
-
-
-//type WordViewModel() = 
-//    inherit NotifyPropertyChange()
-//    let mutable english = ""
-//    let mutable chinese = ""
-//    member this.English
-//        with get() = english
-//        and set value =
-//            this.Update(value,&english)
-//    member this.Chinese
-//        with get() = chinese
-//        and set value =
-//            this.Update(value,&chinese)
-

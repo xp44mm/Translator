@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-xmlns:local="clr-namespace:TranslatorWpf"
-    mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300"
-                     FontSize="18">
+             xmlns:local="clr-namespace:TranslatorWpf"
+             mc:Ignorable="d"
+             d:DesignHeight="300" 
+             d:DesignWidth="300"
+             FontSize="18"
+             >
     <UserControl.Resources>
         <Style x:Key="WrapListBoxStyle">
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
@@ -38,23 +40,24 @@ xmlns:local="clr-namespace:TranslatorWpf"
                     <StackPanel MouseRightButtonUp="Item_MouseRightButtonUp"
                                 Margin="0"
                                 >
-                        <Border BorderBrush="#cb4b16" BorderThickness="0" x:Name="_border">
-                            <TextBlock Text="{Binding Path=Phrase.Text}" FontFamily="Verdana" 
+                        <!--<Border BorderBrush="#cb4b16" BorderThickness="0" x:Name="_border">-->
+                        <TextBlock Text="{Binding Path=Phrase.Text}" FontFamily="Verdana" 
                                        Background="Black" Foreground="#FFF59D"
                                        />
-                        </Border>
+                        <!--</Border>-->
                         <ComboBox SelectedItem="{Binding Chinese}" 
                                   ItemsSource="{Binding ChineseCandidates}" 
                                   Foreground="Black"
+                                  
                                   >
                         </ComboBox>
                     </StackPanel>
 
-                    <DataTemplate.Triggers>
+                    <!--<DataTemplate.Triggers>
                         <DataTrigger Binding="{Binding IsStart}" Value="True">
                             <Setter TargetName="_border" Property="BorderThickness" Value="1,0,0,0"/>
                         </DataTrigger>
-                    </DataTemplate.Triggers>
+                    </DataTemplate.Triggers>-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
@@ -62,12 +65,13 @@ xmlns:local="clr-namespace:TranslatorWpf"
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="1"/>
                     <Setter Property="Padding" Value="0,0,1,2"/>
+
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        
-        <GridSplitter Grid.Row="1"/>
-        
+
+        <GridSplitter Grid.Row="1" />
+
         <!--译文-->
         <TextBox Grid.Row="2" TextWrapping="Wrap" MinLines="1" Text="{Binding Transla}" 
                  FontSize="14" 

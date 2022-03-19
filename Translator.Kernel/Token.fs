@@ -1,7 +1,7 @@
 ﻿namespace Translator.Kernel
-//https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/character-classes-in-regular-expressions
-open System
 open System.Text.RegularExpressions
+
+//https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/character-classes-in-regular-expressions
 type Token(pos:int,lex:string) =
     member this.Position = pos
     member this.Lexeme = lex
@@ -12,17 +12,6 @@ open FSharp.Idioms
 
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 module Token =
-    //let private (|Start|_|) =
-    //    let regex pat = Regex(pat,RegexOptions.IgnoreCase)
-
-    //    let tryStart pat inp =
-    //        let re =regex (sprintf @"^(%s)" pat)
-    //        let m = re.Match(inp)
-    //        if m.Success then
-    //            Some(m.Value,inp.[m.Value.Length ..])
-    //        else
-    //            None
-    //    tryStart
 
     //连续空格、连续字母、连续数字、其他单个字符
     let private trimStart inp =
@@ -34,6 +23,7 @@ module Token =
 
         //缩写 abbr
         | Prefix @"(A\.D\.|A\.M\.|a\.k\.a\.|B\.C\.|e\.g\.|i\.e\.|Mr\.|Mrs\.|Ms\.|O\.K\.|p\.m\.|St\.|u\.s\.|vs\.|Fig\.)" (m, rest)
+        
         //省略 apostrophe
         | Prefix @"'([sdmt]|ll|re|ve)\b" (m, rest)
 
@@ -57,19 +47,19 @@ module Token =
         |> Seq.unfold trimStart
         |> Seq.mapi(fun i s -> Token(i,s))
 
-    ///根据单词的强制起始标志断开单词数组
-    let internal explode (tokens:Token []) =
-        let len = tokens.Length
-        [|
-            yield 0
-            //找到分组行的索引
-            for r in 1 .. len - 1 do
-                let row = tokens.[r]
-                if row.IsStarted then yield r
-            yield len
-        |]
-        |> Array.pairwise
-        |> Array.map(fun(s,f)-> tokens.[s..f])
+    /////根据单词的强制起始标志断开单词数组
+    //let internal explode (tokens:Token []) =
+    //    let len = tokens.Length
+    //    [|
+    //        yield 0
+    //        //找到分组行的索引
+    //        for r in 1 .. len - 1 do
+    //            let row = tokens.[r]
+    //            if row.IsStarted then yield r
+    //        yield len
+    //    |]
+    //    |> Array.pairwise
+    //    |> Array.map(fun(s,f)-> tokens.[s..f])
 
     ///断句
     let sentances (tokens : Token []) =

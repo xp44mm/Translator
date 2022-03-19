@@ -12,8 +12,13 @@
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Height" Value="2"/>
             <Setter Property="ResizeBehavior" Value="PreviousAndNext"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
+            
         </Style>
-        
+
+        <Style TargetType="ToolBar">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
+        </Style>
 
     </Application.Resources>
 </Application>

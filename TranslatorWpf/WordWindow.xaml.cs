@@ -1,13 +1,8 @@
 ﻿using System.Windows;
 using Translator.Kernel;
 
-//using Autofac;
-
 namespace TranslatorWpf
 {
-    /// <summary>
-    /// WordWindow.xaml 的交互逻辑
-    /// </summary>
     public partial class WordWindow : Window
     {
         private WordRepo Repo { get; set; }
@@ -31,19 +26,6 @@ namespace TranslatorWpf
         {
             var eng = WordOperators.neatEnglish(this.tbEnglish.Text);
             var chn = WordOperators.neatChinese(this.tbChinese.Text);
-
-            //using (var scope = ((App)Application.Current).DI.BeginLifetimeScope())
-            //{
-            //    var dictionary = scope.Resolve<WordDictionary>();
-            //    if (string.IsNullOrEmpty(chn))
-            //    {
-            //        dictionary.delete(eng);
-            //    }
-            //    else
-            //    {
-            //        dictionary.update(eng, chn);
-            //    }
-            //}
 
             //修改内存数据库
             var dictionary = Singleton.Words;

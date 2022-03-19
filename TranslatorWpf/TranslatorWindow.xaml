@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Translator"
         Height="400" Width="800"
-        FontSize="18"
+        FontSize="18" 
+        Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
         
         >
     <Window.Resources>
@@ -25,8 +26,8 @@
         </Grid.RowDefinitions>
         
         <!--命令按钮-->
-        <ToolBar>
-            <Button Click="Paste_Click">粘贴</Button>
+        <ToolBar Grid.Row="0">
+            <Button x:Name="btnPaste"  Click="Paste_Click">粘贴</Button>
             <Button Click="modifyDict_Click">编辑词典</Button>
             <Button Click="divide_Click">断开短语</Button>
             <Button Click="Button_Click">测试</Button>
@@ -69,7 +70,7 @@
         
         </ListBox>
 
-        <GridSplitter Grid.Row="2"/>
+        <GridSplitter  Grid.Row="2" />
         
         <local:SentanceUserControl Grid.Row="3"
                                    DataContext ="{Binding ElementName=lstSentances, Path=SelectedItem}"

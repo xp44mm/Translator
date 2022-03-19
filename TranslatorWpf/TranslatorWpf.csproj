@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Translator.ef\Translator.ef.csproj" />
     <ProjectReference Include="..\Translator.Kernel\Translator.Kernel.fsproj" />
   </ItemGroup>

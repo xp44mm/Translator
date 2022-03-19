@@ -6,7 +6,11 @@
         mc:Ignorable="d"
         FontSize="18"
         Title="编辑词典" Height="240" Width="480" 
-        ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+        ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        
+                Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
+
+        >
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="2" />
@@ -35,7 +39,6 @@
         <ToolBar Grid.Row="2">
             <Button Click="Neat_Click">整理</Button>
             <Button Click="UpdateDatabase_Click">更新数据库</Button>
-            <!--<Button Click="CopyWord_Click">复制单词</Button>-->
         </ToolBar>
     </Grid>
 </Window>

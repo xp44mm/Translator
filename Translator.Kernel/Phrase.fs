@@ -1,11 +1,14 @@
 ﻿namespace Translator.Kernel
 open System
 
-///若干个单词组成一个短语
+///若干个单词(token)组成一个短语
 type Phrase(tokens:Token[]) =
     member _.Tokens = tokens
     member _.Position = tokens.[0].Position
-    member _.Text     = tokens |> Array.map(fun tk -> tk.Lexeme) |> String.concat ""
+    member _.Text = 
+        tokens
+        |> Array.map(fun tk -> tk.Lexeme) 
+        |> String.concat ""
 
     new()= new Phrase([||])
 

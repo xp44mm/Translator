@@ -5,9 +5,6 @@ using Translator.Kernel;
 
 namespace TranslatorWpf
 {
-    /// <summary>
-    /// TokensWindow.xaml 的交互逻辑
-    /// </summary>
     public partial class TokensWindow : Window
     {
         public TokensWindow()
@@ -25,7 +22,6 @@ namespace TranslatorWpf
             this.SwitchSpaceDisplay();
         }
 
-        ///显示或隐藏空格
         private void SwitchSpaceDisplay()
         {
             var view = (ListCollectionView)
@@ -45,5 +41,6 @@ namespace TranslatorWpf
         {
             this.SwitchSpaceDisplay();
         }
-    }//class
+        // end class
+    }
 }

@@ -19,7 +19,10 @@ let phraseText (revTokens:Token list) =
 ///pTokens代表phrase Tokens，代表一个短语。pTokens不断从tokens读取token组成短语
 let rec lengthen (engs:string Set) (pTokens:Token list) (tokens:Token list) =
     //如果在词典中查不到短语, tokens到达末尾，或者被强制打断
-    if engs.IsEmpty || tokens.IsEmpty || tokens.Head.IsStarted then
+    if engs.IsEmpty 
+        || tokens.IsEmpty 
+        //|| tokens.Head.IsStarted 
+        then
         pTokens,tokens
     else
         let pTokens,tokens = (tokens.Head:: pTokens), tokens.Tail
@@ -34,7 +37,8 @@ let phrases (engs:string[], tokens:Token []) =
     let rec firstPhrase (accTokens:Token list) (tokens:Token list) =
         match tokens with
         | [] -> accTokens |> List.rev,[]
-        | head :: tail when tail.IsEmpty || tail.Head.IsStarted
+        | head :: tail when tail.IsEmpty 
+            //|| tail.Head.IsStarted
             -> (head::accTokens)|> List.rev,tail
         | head :: tail ->
             //用tokens的第一个单词模糊查询词典

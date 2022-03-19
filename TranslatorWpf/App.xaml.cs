@@ -6,25 +6,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-using Autofac;
+//using Autofac;
 
 using Translator.Kernel;
 
 namespace TranslatorWpf
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-        public IContainer DI { get; private set; }
+        //public IContainer DI { get; private set; }
+        public WordRepo repo { get; private set; }
+
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            var repo = new WordRepo();
-            //var dictionary = new WordDictionary();
+            this.repo = new WordRepo();
 
             Task.Run(repo.getWords)
                 .ContinueWith(tsk =>
@@ -34,24 +32,22 @@ namespace TranslatorWpf
                         Singleton.Words.Add(word.English, word.Chinese);
                     }
                 });
-            
-            var builder = new ContainerBuilder();
-            builder.RegisterInstance(repo).As<WordRepo>();
-            //builder.RegisterInstance(dictionary).As<WordDictionary>();
 
-            builder.RegisterType<TranslatorViewModel>();
-            builder.RegisterType<TranslatorWindow>();
+            //var builder = new ContainerBuilder();
 
-            builder.RegisterType<WordWindow>();
+            //builder.RegisterInstance(repo).As<WordRepo>();
+            //builder.RegisterType<TranslatorViewModel>();
+            //builder.RegisterType<TranslatorWindow>();
+            //builder.RegisterType<WordWindow>();
 
-            this.DI = builder.Build();
+            //this.DI = builder.Build();
 
-            using (var scope = this.DI.BeginLifetimeScope())
-            {
-                var window = scope.Resolve<TranslatorWindow>();
-                
-                window.Show();
-            }
+            //using (var scope = this.DI.BeginLifetimeScope())
+            //{
+            var window = new TranslatorWindow(new TranslatorViewModel());
+            window.btnPaste.IsEnabled = true;
+            window.Show();
+            //}
         }
 
 
