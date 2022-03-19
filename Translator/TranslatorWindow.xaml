@@ -1,0 +1,73 @@
+﻿<Window x:Class="Translator.TranslatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Translator"
+        mc:Ignorable="d"
+        Title="Translator Window"
+        Height="400" Width="800"
+        FontSize="18">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="6"/>
+        </Style>
+
+        <Style TargetType="GridSplitter">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Height" Value="4"/>
+            <Setter Property="ResizeBehavior" Value="PreviousAndNext"/>
+        </Style>
+
+        <Style x:Key="WrapListBoxStyle">
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ListBox.ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--命令按钮-->
+        <ToolBar>
+            <Button Click="Paste_Click">粘贴</Button>
+            <Button Click="modifyDict_Click">编辑词典</Button>
+            <Button Click="divide_Click">断开短语</Button>
+            <Button Click="Button_Click">测试</Button>
+            
+        </ToolBar>
+        <!--句子列表-->
+        <ListBox Grid.Row="1"
+                 HorizontalContentAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ItemsSource="{Binding Sentances}"
+                 SelectionChanged="lstSentances_SelectionChanged" x:Name="lstSentances"
+>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="1" BorderThickness="1" BorderBrush="Green">
+                        <TextBlock TextWrapping="Wrap" Text="{Binding Path=Text}"></TextBlock>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <GridSplitter Grid.Row="2"/>
+        <local:SentanceUserControl Grid.Row="3"
+                                   DataContext ="{Binding ElementName=lstSentances, Path=SelectedItem}"
+                                   x:Name="sentanceControl"/>
+    </Grid>
+</Window>

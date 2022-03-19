@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="NotifyPropertyChanged.fs" />
+    <Compile Include="Token.fs" />
+    <Compile Include="Sentance.fs" />
+    <Compile Include="Essay.fs" />
+    <Compile Include="WordDictionary.fs" />
+    <Compile Include="WordRepo.fs" />
+    <Compile Include="Phrase.fs" />
+    <Compile Include="PhrasePartition.fs" />
+    <Compile Include="PhraseItem.fs" />
+    <Compile Include="Translation.fs" />
+    <Compile Include="SentanceViewModel.fs" />
+    <Compile Include="TranslatorViewModel.fs" />
+    <Compile Include="WordOperators.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="6.0.3" />
+    <PackageReference Include="FSharp.Idioms" Version="1.1.22" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Translator.ef\Translator.ef.csproj" />
+  </ItemGroup>
+
+
+</Project>
