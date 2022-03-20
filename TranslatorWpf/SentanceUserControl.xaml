@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TranslatorWpf"
              mc:Ignorable="d"
              d:DesignHeight="300" 
              d:DesignWidth="300"
              FontSize="18"
              >
+    <!--xmlns:local="clr-namespace:TranslatorWpf"-->
     <UserControl.Resources>
         <Style x:Key="WrapListBoxStyle">
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
@@ -40,24 +40,28 @@
                     <StackPanel MouseRightButtonUp="Item_MouseRightButtonUp"
                                 Margin="0"
                                 >
-                        <!--<Border BorderBrush="#cb4b16" BorderThickness="0" x:Name="_border">-->
                         <TextBlock Text="{Binding Path=Phrase.Text}" FontFamily="Verdana" 
                                        Background="Black" Foreground="#FFF59D"
                                        />
-                        <!--</Border>-->
                         <ComboBox SelectedItem="{Binding Chinese}" 
                                   ItemsSource="{Binding ChineseCandidates}" 
-                                  Foreground="Black"
-                                  
                                   >
+                            <ComboBox.Resources>
+                                <!-- color of ComboBoxItem -->
+                                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Yellow" />
+                                <!-- Mouse over color of ComboBoxItem -->
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="AliceBlue" />
+                                                                
+                            </ComboBox.Resources>
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="ComboBoxItem">
+                                    <Setter Property="Background" Value="Orange"/>
+                                    <Setter Property="Foreground" Value="DarkGreen"/>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
                         </ComboBox>
+                        
                     </StackPanel>
-
-                    <!--<DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding IsStart}" Value="True">
-                            <Setter TargetName="_border" Property="BorderThickness" Value="1,0,0,0"/>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
 

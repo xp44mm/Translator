@@ -6,10 +6,10 @@ open Translator.ef
 ///操作数据库的类型
 type WordRepo() =
             
-    member _.getWords() =
-        use db = new TranslateContext()
-        db.Words.AsNoTracking()
-        |>Seq.toArray
+    //member _.getWords() =
+    //    use db = new TranslateContext()
+    //    db.Words.AsNoTracking()
+    //    |>Seq.toArray
 
     member _.update(word: Word) =
         use db = new TranslateContext()

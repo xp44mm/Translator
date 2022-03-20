@@ -13,7 +13,7 @@
             <Setter Property="Height" Value="2"/>
             <Setter Property="ResizeBehavior" Value="PreviousAndNext"/>
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
-            
+
         </Style>
 
         <Style TargetType="ToolBar">

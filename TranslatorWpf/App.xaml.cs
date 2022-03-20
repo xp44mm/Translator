@@ -1,10 +1,13 @@
 ﻿using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Reactive.Concurrency;
+
 using Translator.Kernel;
+using Microsoft.EntityFrameworkCore;
+using Translator.ef;
 
 namespace TranslatorWpf
 {
@@ -16,21 +19,23 @@ namespace TranslatorWpf
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var tsk = Task.Run(repo.getWords);
+            TranslatorWindow window = new TranslatorWindow(new TranslatorViewModel());
 
-            var window = new TranslatorWindow(new TranslatorViewModel());
-                tsk
-                .ToObservable()
-                .Select(words =>
+            Observable.FromAsync(async () =>
+            {
+                using (var db = new TranslateContext())
                 {
+                    var words = await db.Words.AsNoTracking().ToArrayAsync();
                     foreach (var word in words)
                     {
                         Singleton.Words.Add(word.English, word.Chinese);
                     }
-                    return Unit.Default;
-                })
-                .ObserveOn(SynchronizationContext.Current)
-                .Subscribe(new ReadyGo(window));
+                };
+                return Unit.Default;
+            })
+                .SubscribeOn(System.Reactive.Concurrency.TaskPoolScheduler.Default)
+                .ObserveOn(System.Threading.SynchronizationContext.Current)
+                .Subscribe(Observer.Create((Unit x) => window.btnPaste.IsEnabled = true));
 
             window.Show();
         }
