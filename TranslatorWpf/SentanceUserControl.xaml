@@ -31,8 +31,8 @@
 
         <!--中英文对照-->
         <ListBox
-                 Style="{StaticResource WrapListBoxStyle}"
-                 ItemsSource="{Binding PhraseItems}" x:Name="lstPhrases" 
+            Style="{StaticResource WrapListBoxStyle}"
+            ItemsSource="{Binding PhraseItems}" x:Name="lstPhrases" 
             Background="#424242" 
             >
             <ListBox.ItemTemplate>
@@ -41,27 +41,29 @@
                                 Margin="0"
                                 >
                         <TextBlock Text="{Binding Path=Phrase.Text}" FontFamily="Verdana" 
-                                       Background="Black" Foreground="#FFF59D"
+                                   Background="Black" Foreground="#FFF59D"
                                        />
                         <ComboBox SelectedItem="{Binding Chinese}" 
                                   ItemsSource="{Binding ChineseCandidates}" 
+                                  Visibility="Collapsed"
+                                  x:Name="_combobox"
                                   >
-                            <ComboBox.Resources>
-                                <!-- color of ComboBoxItem -->
-                                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Yellow" />
-                                <!-- Mouse over color of ComboBoxItem -->
-                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="AliceBlue" />
-                                                                
-                            </ComboBox.Resources>
-                            <ComboBox.ItemContainerStyle>
-                                <Style TargetType="ComboBoxItem">
-                                    <Setter Property="Background" Value="Orange"/>
-                                    <Setter Property="Foreground" Value="DarkGreen"/>
-                                </Style>
-                            </ComboBox.ItemContainerStyle>
                         </ComboBox>
-                        
+
+                        <TextBlock Text="{Binding Path=Chinese}" Visibility="Visible"
+                                   Background="Black" Foreground="#A5D6A7"
+                                   x:Name="_textblock" Margin="0,3,0,3"
+                                       />
                     </StackPanel>
+
+                    <DataTemplate.Triggers>
+                        <DataTrigger 
+                            Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem }}}"
+                            Value="True" >
+                            <Setter TargetName="_combobox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="_textblock" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
@@ -69,7 +71,6 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="1"/>
                     <Setter Property="Padding" Value="0,0,1,2"/>
-
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
