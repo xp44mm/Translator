@@ -1,8 +1,21 @@
-可以删除的项目
-translatorWpf <- translator, 后者可以删除
-translator.kernel.tests <- translator.test,后者可以删除
+# Translator
 
-不强制分隔词组，
+## Install
+
+数据库
+
+主程序
+
+## tutorial
+
+### 主界面
+
+
+
+### 修改数据库
+
+
+
 当最终获得的词组后面是减号时，这个词组将继续缩短。
 
 分层次token，第一层将输入用空白分隔，第二层接着分解非空白。
