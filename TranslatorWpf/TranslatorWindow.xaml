@@ -50,7 +50,7 @@
                     <Border BorderBrush="#cb4b16" BorderThickness="0" x:Name="_border">
                         <TextBlock TextWrapping="Wrap" Text="{Binding Path=Text}"
                                    Background="Black" Foreground="#A5D6A7" 
-                                   FontFamily="Tahoma"  x:Name="_textblock"
+                                   FontFamily="Corbel Light"  x:Name="_textblock"
                                    ></TextBlock>
                     </Border>
                     <DataTemplate.Triggers>

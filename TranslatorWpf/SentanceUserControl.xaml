@@ -40,19 +40,20 @@
                     <StackPanel MouseRightButtonUp="Item_MouseRightButtonUp"
                                 Margin="0"
                                 >
-                        <TextBlock Text="{Binding Path=Phrase.Text}" FontFamily="Verdana" 
+                        <TextBlock Text="{Binding Path=Phrase.Text}"
+                                   FontFamily="Calibri Light" 
                                    Background="Black" Foreground="#FFF59D"
                                        />
                         <ComboBox SelectedItem="{Binding Chinese}" 
                                   ItemsSource="{Binding ChineseCandidates}" 
                                   Visibility="Collapsed"
-                                  x:Name="_combobox"
+                                  x:Name="_combobox" FontFamily="NSimSun" FontSize="16"
                                   >
                         </ComboBox>
 
                         <TextBlock Text="{Binding Path=Chinese}" Visibility="Visible"
                                    Background="Black" Foreground="#A5D6A7"
-                                   x:Name="_textblock" Margin="0,3,0,3"
+                                   x:Name="_textblock" Margin="0,3,0,3" FontFamily="NSimSun" FontSize="16"
                                        />
                     </StackPanel>
 
@@ -80,7 +81,7 @@
         <!--译文-->
         <TextBox Grid.Row="2" TextWrapping="Wrap" MinLines="1" Text="{Binding Transla}" 
                  FontSize="14" 
-                 Background="Black" Foreground="#FFF59D"
+                 Background="Black" Foreground="#FFF59D" FontFamily="Microsoft YaHei Light"
                  />
     </Grid>
 </UserControl>

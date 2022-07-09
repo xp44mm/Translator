@@ -32,9 +32,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBox x:Name="tbEnglish" 
-                 Background="#616161" Foreground="#FFF59D"/>
+                 Background="#616161" Foreground="#FFF59D" FontFamily="Trebuchet MS"/>
         <TextBox x:Name="tbChinese"  Grid.Row="1" Style="{StaticResource MultiLineTextBox}" 
-                 Background="#616161" Foreground="#A5D6A7"/>
+                 Background="#616161" Foreground="#A5D6A7" FontFamily="Microsoft YaHei Light"/>
 
         <ToolBar Grid.Row="2">
             <Button Click="Neat_Click">整理</Button>
