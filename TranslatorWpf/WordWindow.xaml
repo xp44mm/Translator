@@ -4,13 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        FontSize="18"
         Title="编辑词典" Height="240" Width="480" 
         ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-        
-                Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
-
+        Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
         >
+    
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="2" />
@@ -32,9 +30,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBox x:Name="tbEnglish" 
-                 Background="#616161" Foreground="#FFF59D" FontFamily="Trebuchet MS"/>
+                 Background="#616161" Foreground="#FFF59D"
+                 FontFamily="Corbel Light"
+FontSize="20"
+                 />
         <TextBox x:Name="tbChinese"  Grid.Row="1" Style="{StaticResource MultiLineTextBox}" 
-                 Background="#616161" Foreground="#A5D6A7" FontFamily="Microsoft YaHei Light"/>
+                 Background="#616161" Foreground="#A5D6A7"
+                 FontFamily="DengXian Light"
+FontSize="21"
+                 />
 
         <ToolBar Grid.Row="2">
             <Button Click="Neat_Click">整理</Button>

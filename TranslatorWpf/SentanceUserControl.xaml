@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              d:DesignHeight="300" 
              d:DesignWidth="300"
-             FontSize="18"
              >
     <!--xmlns:local="clr-namespace:TranslatorWpf"-->
     <UserControl.Resources>
@@ -33,7 +32,8 @@
         <ListBox
             Style="{StaticResource WrapListBoxStyle}"
             ItemsSource="{Binding PhraseItems}" x:Name="lstPhrases" 
-            Background="#424242" 
+            Background="#424242"
+            
             >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -41,19 +41,24 @@
                                 Margin="0"
                                 >
                         <TextBlock Text="{Binding Path=Phrase.Text}"
-                                   FontFamily="Calibri Light" 
                                    Background="Black" Foreground="#FFF59D"
+                                   FontFamily="Corbel Light"
+                                   FontSize="20"
                                        />
                         <ComboBox SelectedItem="{Binding Chinese}" 
                                   ItemsSource="{Binding ChineseCandidates}" 
                                   Visibility="Collapsed"
-                                  x:Name="_combobox" FontFamily="NSimSun" FontSize="16"
+                                  FontFamily="DengXian Light"
+                                  FontSize="21"
+                                  x:Name="_combobox"
                                   >
                         </ComboBox>
 
                         <TextBlock Text="{Binding Path=Chinese}" Visibility="Visible"
                                    Background="Black" Foreground="#A5D6A7"
-                                   x:Name="_textblock" Margin="0,3,0,3" FontFamily="NSimSun" FontSize="16"
+                                   x:Name="_textblock" Margin="0,3,0,3"
+                                   FontFamily="DengXian Light"
+                                   FontSize="21"
                                        />
                     </StackPanel>
 
@@ -79,9 +84,11 @@
         <GridSplitter Grid.Row="1" />
 
         <!--译文-->
-        <TextBox Grid.Row="2" TextWrapping="Wrap" MinLines="1" Text="{Binding Transla}" 
-                 FontSize="14" 
-                 Background="Black" Foreground="#FFF59D" FontFamily="Microsoft YaHei Light"
+        <TextBox Grid.Row="2" TextWrapping="Wrap" MinLines="1"
+                 Text="{Binding Transla}"                 
+                 Background="Black" Foreground="#FFF59D"
+                 FontFamily="DengXian Light"
+                 FontSize="20"
                  />
     </Grid>
 </UserControl>

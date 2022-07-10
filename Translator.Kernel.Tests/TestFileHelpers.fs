@@ -36,4 +36,5 @@ let options:DbContextOptions<TranslateContext> =
     builder.UseSqlServer(connectionString) |> ignore
     builder.Options
 
+    
 

@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="Translator"
         Height="400" Width="800"
-        FontSize="18" 
         Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
-        
         >
     <Window.Resources>
 
@@ -36,8 +34,11 @@
                  HorizontalContentAlignment="Stretch"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ItemsSource="{Binding Sentances}"
-                 SelectionChanged="lstSentances_SelectionChanged" x:Name="lstSentances" 
-                 Background="#424242" >
+                 SelectionChanged="lstSentances_SelectionChanged"
+                 x:Name="lstSentances" 
+                 Background="#424242"
+                 FontSize="20"
+                 >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="0,0,0,0"/>
@@ -50,7 +51,8 @@
                     <Border BorderBrush="#cb4b16" BorderThickness="0" x:Name="_border">
                         <TextBlock TextWrapping="Wrap" Text="{Binding Path=Text}"
                                    Background="Black" Foreground="#A5D6A7" 
-                                   FontFamily="Corbel Light"  x:Name="_textblock"
+                                   FontFamily="Corbel Light"
+                                   x:Name="_textblock"
                                    ></TextBlock>
                     </Border>
                     <DataTemplate.Triggers>
