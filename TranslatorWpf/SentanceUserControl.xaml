@@ -33,7 +33,6 @@
             Style="{StaticResource WrapListBoxStyle}"
             ItemsSource="{Binding PhraseItems}" x:Name="lstPhrases" 
             Background="#424242"
-            
             >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -49,7 +48,7 @@
                                   ItemsSource="{Binding ChineseCandidates}" 
                                   Visibility="Collapsed"
                                   FontFamily="DengXian Light"
-                                  FontSize="21"
+                                  FontSize="20"
                                   x:Name="_combobox"
                                   >
                         </ComboBox>
@@ -58,7 +57,7 @@
                                    Background="Black" Foreground="#A5D6A7"
                                    x:Name="_textblock" Margin="0,3,0,3"
                                    FontFamily="DengXian Light"
-                                   FontSize="21"
+                                   FontSize="20"
                                        />
                     </StackPanel>
 

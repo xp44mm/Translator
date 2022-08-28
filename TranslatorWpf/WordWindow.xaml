@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="编辑词典" Height="240" Width="480" 
-        ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Height="240" Width="480" 
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Title="编辑词典"
         Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
         >
     
@@ -30,14 +32,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBox x:Name="tbEnglish" 
-                 Background="#616161" Foreground="#FFF59D"
+                 Background="Black" Foreground="#FFF59D"
                  FontFamily="Corbel Light"
-FontSize="20"
+                 FontSize="20"
                  />
-        <TextBox x:Name="tbChinese"  Grid.Row="1" Style="{StaticResource MultiLineTextBox}" 
-                 Background="#616161" Foreground="#A5D6A7"
+        <TextBox x:Name="tbChinese"  Grid.Row="1"
+                 Style="{StaticResource MultiLineTextBox}" 
+                 Background="Black" Foreground="#A5D6A7"
                  FontFamily="DengXian Light"
-FontSize="21"
+                 FontSize="18"
                  />
 
         <ToolBar Grid.Row="2">
