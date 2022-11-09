@@ -1,5 +1,4 @@
 ﻿namespace Translator.Kernel
-open System.Text.RegularExpressions
 
 //https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/character-classes-in-regular-expressions
 type Token(pos:int,lex:string) =
@@ -9,6 +8,7 @@ type Token(pos:int,lex:string) =
     member val IsStarted = false with get, set
 
 open FSharp.Idioms
+open System.Text.RegularExpressions
 
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 module Token =
@@ -19,25 +19,25 @@ module Token =
 
         | "" -> None
 
-        | Prefix @"[\p{Z}]+" (_,rest) -> Some(" ",rest)
+        | On(tryMatch(Regex @"^[\p{Z}]+")) (_,rest) -> Some(" ",rest)
 
         //缩写 abbr
-        | Prefix @"(A\.D\.|A\.M\.|a\.k\.a\.|B\.C\.|e\.g\.|i\.e\.|Mr\.|Mrs\.|Ms\.|O\.K\.|p\.m\.|St\.|u\.s\.|vs\.|Fig\.)" (m, rest)
+        | On(tryMatch(Regex @"^(A\.D\.|A\.M\.|a\.k\.a\.|B\.C\.|e\.g\.|i\.e\.|Mr\.|Mrs\.|Ms\.|O\.K\.|p\.m\.|St\.|u\.s\.|vs\.|Fig\.)")) (m, rest)
         
         //省略 apostrophe
-        | Prefix @"'([sdmt]|ll|re|ve)\b" (m, rest)
+        | On(tryMatch(Regex @"^'([sdmt]|ll|re|ve)\b")) (m, rest)
 
         //字母与标记
-        | Prefix @"[\p{L}\p{M}]+" (m, rest)
+        | On(tryMatch(Regex @"^[\p{L}\p{M}]+")) (m, rest)
 
         //数字
-        | Prefix @"[\p{N}\p{S}]+" (m, rest)
+        | On(tryMatch(Regex @"^[\p{N}\p{S}]+")) (m, rest)
 
         //标点
-        | Prefix @"[\p{P}]" (m, rest) -> Some(m, rest)
+        | On(tryMatch(Regex @"^[\p{P}]")) (m, rest) -> Some(m, rest)
 
         //其他字符@"[\S-[a-zéêèï]]*[\S-[-=`\\';/.,~!@#$%^&*\[\]()_+{}|:""<>?"
-        | Prefix @"\S" (m, rest) -> Some(m, rest)
+        | On(tryMatch(Regex @"^\S")) (m, rest) -> Some(m, rest)
 
         | _ -> Some(inp,"")
 
