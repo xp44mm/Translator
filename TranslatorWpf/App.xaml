@@ -4,22 +4,15 @@
              ShutdownMode="OnMainWindowClose"
              >
     <Application.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="6,0,6,0"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <!-- Theme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style TargetType="GridSplitter">
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Height" Value="2"/>
-            <Setter Property="ResizeBehavior" Value="PreviousAndNext"/>
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
-
-        </Style>
-
-        <Style TargetType="ToolBar">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
-        </Style>
-
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

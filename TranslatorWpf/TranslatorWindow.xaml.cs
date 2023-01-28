@@ -9,7 +9,7 @@ using Translator.Kernel;
 
 namespace TranslatorWpf
 {
-    public partial class TranslatorWindow : Window
+    public partial class TranslatorWindow
     {
         public TranslatorWindow(TranslatorViewModel vm)
         {

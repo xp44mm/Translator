@@ -3,7 +3,7 @@ using Translator.Kernel;
 
 namespace TranslatorWpf
 {
-    public partial class WordWindow : Window
+    public partial class WordWindow
     {
         private WordRepo Repo { get; set; }
 

@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30128.74
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Translator.ef", "Translator.ef\Translator.ef.csproj", "{FE94103C-8808-4F34-ACCF-6EE7496B7C05}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Translator.Kernel", "Translator.Kernel\Translator.Kernel.fsproj", "{6492D368-134F-40DC-B7D2-E9CB7154DE53}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Translator.Kernel.Tests", "Translator.Kernel.Tests\Translator.Kernel.Tests.fsproj", "{E4DE022A-3C07-4207-A703-B6AF4BDE71F1}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Translator.Kernel.Tests", "Translator.Kernel.Tests\Translator.Kernel.Tests.fsproj", "{E4DE022A-3C07-4207-A703-B6AF4BDE71F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatorWpf", "TranslatorWpf\TranslatorWpf.csproj", "{7422FBE3-F3A6-4A13-A44E-25B8D0E7F871}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslatorWpf", "TranslatorWpf\TranslatorWpf.csproj", "{7422FBE3-F3A6-4A13-A44E-25B8D0E7F871}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Translator", "Translator\Translator.fsproj", "{FB3003A7-68EC-423E-809C-A679DFB83708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{7422FBE3-F3A6-4A13-A44E-25B8D0E7F871}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7422FBE3-F3A6-4A13-A44E-25B8D0E7F871}.Release|x64.ActiveCfg = Release|Any CPU
 		{7422FBE3-F3A6-4A13-A44E-25B8D0E7F871}.Release|x64.Build.0 = Release|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Debug|x64.Build.0 = Debug|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Release|x64.ActiveCfg = Release|Any CPU
+		{FB3003A7-68EC-423E-809C-A679DFB83708}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

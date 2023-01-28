@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net481</TargetFramework> 
+
+    <WarnOn>3390;$(WarnOn)</WarnOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="WordWindow.xaml">    </Resource>
+    <Resource Include="SentanceUserControl.xaml" />
+    <Resource Include="TranslatorWindow.xaml">    </Resource>
+    <Resource Include="App.xaml" />
+    <Compile Include="WordWindow.fs" />
+    <Compile Include="SentanceUserControl.fs" />
+    <Compile Include="TranslatorWindow.fs" />
+    <Compile Include="App.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FsXaml.Wpf" Version="3.1.6" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+    <PackageReference Include="System.Reactive.Observable.Aliases" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+</Project>
