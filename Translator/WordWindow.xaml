@@ -31,10 +31,8 @@
                  />
 
         <ToolBar Grid.Row="2">
-            <!--Click="Neat_Click"-->
-            <Button >整理</Button>
-            <!--Click="UpdateDatabase_Click"-->
-            <Button >更新数据库</Button>
+            <Button x:Name="btnNeat">整理</Button>
+            <Button x:Name="btnUpdateDatabase">更新数据库</Button>
         </ToolBar>
     </Grid>
 </mah:MetroWindow>

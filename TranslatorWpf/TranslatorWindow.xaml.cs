@@ -3,8 +3,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-//using Autofac;
-
 using Translator.Kernel;
 
 namespace TranslatorWpf
@@ -48,8 +46,6 @@ namespace TranslatorWpf
 
         private void modifyDict_Click(Object sender, RoutedEventArgs e)
         {
-            //using (var scope = ((App)Application.Current).DI.BeginLifetimeScope())
-            //{
             var dlg = new WordWindow(((App)Application.Current).repo);
             dlg.Owner = this;
             dlg.InitialText(this.sentanceControl.SelectedPhrase());
@@ -63,7 +59,6 @@ namespace TranslatorWpf
                 }
                 this.translateSelectedSetance();
             }
-            //}
         }
 
         private void translateSelectedSetance(bool force = false)
@@ -74,8 +69,6 @@ namespace TranslatorWpf
                 var dictionary = Singleton.Words;
                 var olds = Translation.keepSelection(sentance.PhraseItems);
                 sentance.PhraseItems = Translation.Update(dictionary, sentance.Tokens, olds);
-
-
             }
         }
 
@@ -98,12 +91,6 @@ namespace TranslatorWpf
             }
         }
 
-        //private void Button_Click(Object sender, RoutedEventArgs e)
-        //{
-        //    var dictionary = Singleton.Words;
-        //    MessageBox.Show($"{dictionary.Count}");
-        //}
 
-        //end class
     }
 }

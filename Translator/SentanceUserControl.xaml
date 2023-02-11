@@ -1,24 +1,26 @@
 ﻿<UserControl
+    x:Class="Translator.SentanceUserControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Translator;assembly=Translator"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
     >
     <UserControl.Resources>
         <Style x:Key="WrapListBoxStyle">
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="ListBox.ItemsPanel">
                 <Setter.Value>
                     <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
+                        <WrapPanel >
+                        </WrapPanel>
                     </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
     </UserControl.Resources>
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -27,39 +29,34 @@
 
         <!--中英文对照-->
 
-        <!--ItemsSource="{Binding PhraseItems}"-->
         <ListBox
             Style="{StaticResource WrapListBoxStyle}"
-            x:Name="lstPhrases"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ItemsSource="{Binding PhraseItems}" x:Name="lstPhrases"
+            Background="{StaticResource MahApps.Brushes.Control.Background}"
             >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--MouseRightButtonUp="Item_MouseRightButtonUp"-->
-                    <StackPanel
-                        Margin="0"
-                        >
-                        <!--Text="{Binding Path=Phrase.Text}"-->
-                        <TextBlock
-
-                            FontFamily="Corbel Light"
-                            FontSize="20"
-                            />
-                        <!--SelectedItem="{Binding Chinese}"
-                        ItemsSource="{Binding ChineseCandidates}"-->
-
-                        <ComboBox
-
-                            Visibility="Collapsed"
-                            FontFamily="DengXian Light"
-                            FontSize="20"
-                            x:Name="_combobox"
-                            >
-                        </ComboBox>
-                        <!--Text="{Binding Path=Chinese}"-->
-                        <TextBlock Visibility="Visible"
-                                   x:Name="_textblock" Margin="0,3,0,3"
-                                   FontFamily="DengXian Light"
+                    <StackPanel  MouseRightButtonUp="Item_MouseRightButtonUp"
+                                >
+                        <TextBlock Text="{Binding Path=Phrase.Text}"
+                                   Foreground="#FFF59D"
+                                   FontFamily="Corbel Light"
                                    FontSize="20"
+                                   />
+                        <ComboBox SelectedItem="{Binding Chinese}"
+                                  ItemsSource="{Binding ChineseCandidates}"
+                                  Visibility="Collapsed"
+                                  FontFamily="DengXian Light"
+                                  FontSize="20"
+                                  x:Name="_combobox"
+                                  />
+
+                        <TextBlock Text="{Binding Path=Chinese}" Visibility="Visible"
+                                   Margin="0,3,0,3"
+                                   FontFamily="DengXian Light" Foreground="#A5D6A7"
+                                   FontSize="20"
+                                   x:Name="_textblock"
                                    />
                     </StackPanel>
 
@@ -82,11 +79,16 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
 
-        <GridSplitter Grid.Row="1" />
+        <GridSplitter Grid.Row="1"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Bottom"
+                      ResizeBehavior="PreviousAndNext"
+                      Height="2"
+                      />
 
         <!--译文-->
-        <!--Text="{Binding Transla}"-->
         <TextBox Grid.Row="2" TextWrapping="Wrap" MinLines="1"
+                 Text="{Binding Transla}"
                  FontFamily="DengXian Light"
                  FontSize="20"
                  />

@@ -5,21 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
              >
-    <!--xmlns:local="clr-namespace:TranslatorWpf"-->
     <UserControl.Resources>
         <Style x:Key="WrapListBoxStyle">
-            <!--<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>-->
             <Setter Property="ListBox.ItemsPanel">
                 <Setter.Value>
                     <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
+                        <WrapPanel >
+                        </WrapPanel>
                     </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
     </UserControl.Resources>
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -32,14 +31,12 @@
             Style="{StaticResource WrapListBoxStyle}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ItemsSource="{Binding PhraseItems}" x:Name="lstPhrases"
-            Background="#424242"
+            Background="{StaticResource MahApps.Brushes.Control.Background}"
             >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel MouseRightButtonUp="Item_MouseRightButtonUp"
-                                Margin="0"
                                 >
-                        <!--Background="Black" -->
                         <TextBlock Text="{Binding Path=Phrase.Text}"
                                    Foreground="#FFF59D"
                                    FontFamily="Corbel Light"
@@ -54,7 +51,6 @@
                                   >
                         </ComboBox>
 
-                        <!--Background="Black"-->
                         <TextBlock Text="{Binding Path=Chinese}" Visibility="Visible"
                                    x:Name="_textblock" Margin="0,3,0,3"
                                    FontFamily="DengXian Light" Foreground="#A5D6A7"
@@ -73,12 +69,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
-            <!--<ListBox.ItemContainerStyle>
-            <Style TargetType="ListBoxItem">
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Padding" Value="0,0,1,2"/>
-            </Style>
-            </ListBox.ItemContainerStyle>-->
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="1"/>
+                    <Setter Property="Padding" Value="0,0,1,2"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
         </ListBox>
 
         <GridSplitter Grid.Row="1"
@@ -90,7 +86,6 @@
                       />
 
         <!--译文-->
-        <!--Background="Black" Foreground="#FFF59D"-->
         <TextBox Grid.Row="2" TextWrapping="Wrap" MinLines="1"
                  Text="{Binding Transla}"
                  FontFamily="DengXian Light"
