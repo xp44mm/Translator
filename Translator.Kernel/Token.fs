@@ -8,9 +8,11 @@ type Token(pos:int,lex:string) =
     member val IsStarted = false with get, set
 
 open FSharp.Idioms
+open FSharp.Idioms.ActivePatterns
+open FSharp.Idioms.RegularExpressions
+
 open System.Text.RegularExpressions
 
-[<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 module Token =
 
     //连续空格、连续字母、连续数字、其他单个字符
@@ -19,25 +21,27 @@ module Token =
 
         | "" -> None
 
-        | On(tryMatch(Regex @"^[\p{Z}]+")) (_,rest) -> Some(" ",rest)
+        //空白
+        | Rgx @"^[\p{Z}]+" m -> Some(" ",m.Result("$'"))
 
         //缩写 abbr
-        | On(tryMatch(Regex @"^(A\.D\.|A\.M\.|a\.k\.a\.|B\.C\.|e\.g\.|i\.e\.|Mr\.|Mrs\.|Ms\.|O\.K\.|p\.m\.|St\.|u\.s\.|vs\.|Fig\.)")) (m, rest)
+        | Rgx @"^(A\.D\.|A\.M\.|a\.k\.a\.|B\.C\.|e\.g\.|i\.e\.|Mr\.|Mrs\.|Ms\.|O\.K\.|p\.m\.|St\.|u\.s\.|vs\.|Fig\.)" m
         
         //省略 apostrophe
-        | On(tryMatch(Regex @"^'([sdmt]|ll|re|ve)\b")) (m, rest)
+        | Rgx @"^'([sdmt]|ll|re|ve)\b" m
 
         //字母与标记
-        | On(tryMatch(Regex @"^[\p{L}\p{M}]+")) (m, rest)
+        | Rgx @"^[\p{L}\p{M}]+" m
 
         //数字
-        | On(tryMatch(Regex @"^[\p{N}\p{S}]+")) (m, rest)
+        | Rgx @"^[\p{N}\p{S}]+" m
 
         //标点
-        | On(tryMatch(Regex @"^[\p{P}]")) (m, rest) -> Some(m, rest)
+        | Rgx @"^[\p{P}]" m 
 
         //其他字符@"[\S-[a-zéêèï]]*[\S-[-=`\\';/.,~!@#$%^&*\[\]()_+{}|:""<>?"
-        | On(tryMatch(Regex @"^\S")) (m, rest) -> Some(m, rest)
+        | Rgx @"^\S" m
+            -> Some(m.Value,m.Result("$'"))
 
         | _ -> Some(inp,"")
 

@@ -21,10 +21,13 @@ type TranslatorWindow () as this =
     let vm = TranslatorViewModel()
 
     let translateSelectedSetance (force:bool) =
-        let sentance = unbox<SentanceViewModel>this.lstSentances.SelectedItem
-        if not sentance.Updated || force then
-            let olds = Translation.keepSelection(sentance.PhraseItems)
-            sentance.PhraseItems <- Translation.Update(Singleton.Words, sentance.Tokens, olds)
+        match this.lstSentances.SelectedItem with
+        | null -> ()
+        | :? SentanceViewModel as sentance ->
+            if not sentance.Updated || force then
+                let olds = Translation.keepSelection(sentance.PhraseItems)
+                sentance.PhraseItems <- Translation.Update(Singleton.Words, sentance.Tokens, olds)
+        | x -> failwith $"{x.GetType()}"
 
     do 
         this.DataContext <- vm
@@ -60,10 +63,5 @@ type TranslatorWindow () as this =
         )
 
         this.lstSentances.SelectionChanged.Add(fun _ ->
-            try
-                translateSelectedSetance false
-            with ex ->
-                MessageBox.Show($"selection changed:{ex.Message}")
-                |> ignore
-       
+            translateSelectedSetance false
         )
