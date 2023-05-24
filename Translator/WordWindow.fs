@@ -22,9 +22,6 @@ type WordWindow () as this =
         this.btnNeat.Click.Add(fun _ ->
             this.tbEnglish.Text <- WordOperators.neatEnglish(this.tbEnglish.Text)
             this.tbChinese.Text <- WordOperators.neatChinese(this.tbChinese.Text)
-
-            //MessageBox.Show(this,"hello world","Neat")
-            //|> ignore
         )
         this.btnUpdateDatabase.Click.Add(fun _ ->
             let eng = WordOperators.neatEnglish(this.tbEnglish.Text)
