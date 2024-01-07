@@ -34,12 +34,12 @@ type TranslatorWindow () as this =
 
         this.btnPaste.Click.Add(fun _ ->
             let text =
-                if Clipboard.ContainsText() then
+                if Clipboard.ContainsText(TextDataFormat.UnicodeText) then
                     try
-                        Clipboard.GetText()
+                        Clipboard.GetText(TextDataFormat.UnicodeText)
                     with e -> e.Message
                 else
-                    "剪贴板没有包含文本！"
+                    "Clipboard does not contain text!"
             let essay = Essay(text)
             vm.Sentances <-
                 essay.Sentances
