@@ -9,6 +9,7 @@ namespace Translator.ef
         [Key]
         [StringLength(200)]
         public string English { get; set; }
+
         [Required]
         [StringLength(600)]
         public string Chinese { get; set; }
