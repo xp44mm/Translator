@@ -17,24 +17,24 @@ open Translator.ef
 
 //let path = Directory.GetCurrentDirectory()
 
-let GetConfiguration() =
+//let GetConfiguration() =
     
-    let builder = ConfigurationBuilder()
-                    .SetBasePath(__SOURCE_DIRECTORY__)
-                    .AddJsonFile("appsettings.json", false, false)
-                    //.AddEnvironmentVariables()
+//    let builder = ConfigurationBuilder()
+//                    .SetBasePath(__SOURCE_DIRECTORY__)
+//                    .AddJsonFile("appsettings.json", false, false)
+//                    //.AddEnvironmentVariables()
 
-    builder.Build()
+//    builder.Build()
 
-let getConnectionString() = 
-    let config = GetConfiguration()   
-    config.GetConnectionString("DefaultConnection")
+//let getConnectionString() = 
+//    let config = GetConfiguration()   
+//    config.GetConnectionString("DefaultConnection")
 
-let options:DbContextOptions<TranslateContext> = 
-    let builder = new DbContextOptionsBuilder<TranslateContext>()
-    let connectionString = getConnectionString()
-    builder.UseSqlServer(connectionString) |> ignore
-    builder.Options
+//let options:DbContextOptions<TranslateContext> = 
+//    let builder = new DbContextOptionsBuilder<TranslateContext>()
+//    let connectionString = getConnectionString()
+//    builder.UseSqlServer(connectionString) |> ignore
+//    builder.Options
 
     
 

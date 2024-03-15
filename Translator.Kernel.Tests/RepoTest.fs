@@ -6,7 +6,8 @@ open Xunit.Abstractions
 open Translator.Kernel
 open Translator.ef
 
-//open Autofac
+open System
+open System.IO
 
 //[<Collection("AutofacCollection")>]
 type RepoTest(output: ITestOutputHelper) = //,fixture: AutofacFixture
@@ -56,4 +57,9 @@ type RepoTest(output: ITestOutputHelper) = //,fixture: AutofacFixture
     //    repo.delete("csl.translate.test.data")
     //    let w1 = repo.getWords() |> Array.tryFind(fun w -> w.English = "csl.translate.test.data")
     //    Assert.Equal(w1,Option.None)
-    
+
+    [<Fact>]
+    member this.``Environment``() =
+        let folder = Environment.SpecialFolder.LocalApplicationData;
+        let path = Environment.GetFolderPath(folder)
+        output.WriteLine(path);
