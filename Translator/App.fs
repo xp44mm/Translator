@@ -11,7 +11,7 @@ open System.Windows
 open System.Reactive.Concurrency
 open Translator.Kernel
 open Microsoft.EntityFrameworkCore
-open Translator.ef
+open Translator.Scaffold
 
 type App = XAML<"App.xaml">
 
@@ -26,8 +26,8 @@ let main argv =
 
     use _ = Observable.FromAsync(fun () ->
             task {
-                use db = new TranslateContext()
-                let! words = db.Words.AsNoTracking().ToArrayAsync()
+                use db = new VocabularyDbContext()
+                let! words = db.Word.AsNoTracking().ToArrayAsync()
                 for word in words do
                     Singleton.Words.Add(word.English, word.Chinese)
             })

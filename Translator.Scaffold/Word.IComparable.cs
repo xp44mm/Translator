@@ -1,7 +1,8 @@
 ﻿using System;
 
-namespace Translator.ef
+namespace Translator.Scaffold
 {
+
     //word的主键English不区分大小写相等。则Word相等。
     public partial class Word : IComparable
     {
@@ -22,4 +23,5 @@ namespace Translator.ef
             return this.English.ToLower().GetHashCode();
         }
     }
+
 }

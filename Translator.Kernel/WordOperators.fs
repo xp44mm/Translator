@@ -3,7 +3,7 @@
 open System
 open System.Text.RegularExpressions
 
-open Translator.ef
+open Translator.Scaffold
 
 ///“编辑”对话框
 module WordOperators =

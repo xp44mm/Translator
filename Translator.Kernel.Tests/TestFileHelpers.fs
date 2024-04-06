@@ -3,7 +3,7 @@
 
 open Microsoft.Extensions.Configuration
 open Microsoft.EntityFrameworkCore
-open Translator.ef
+open Translator.Scaffold
 
 //open System.Text.RegularExpressions
 //open System.IO

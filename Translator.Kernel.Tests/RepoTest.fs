@@ -4,7 +4,7 @@ open Xunit
 open Xunit.Abstractions
 
 open Translator.Kernel
-open Translator.ef
+open Translator.Scaffold
 
 open System
 open System.IO
