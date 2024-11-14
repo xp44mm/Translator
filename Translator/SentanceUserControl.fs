@@ -32,5 +32,5 @@ type SentanceUserControl () =
             | :? TextBlock as c -> c.Text
             | :? ComboBox as c -> c.Text
             | c -> failwith $"{c.GetType()}"
-        let sentance = unbox<SentanceViewModel>this.DataContext        
+        let sentance = unbox<SentanceViewModel>this.DataContext
         sentance.Transla <- sentance.Transla + t

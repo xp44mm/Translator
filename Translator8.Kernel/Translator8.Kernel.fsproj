@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,18 +19,21 @@
     <Compile Include="SentanceViewModel.fs" />
     <Compile Include="TranslatorViewModel.fs" />
     <Compile Include="WordOperators.fs" />
+    <Compile Include="AppOps.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Idioms" Version="1.4.24" />
+    <PackageReference Include="System.Reactive" Version="6.0.1" />
+    <PackageReference Include="System.Reactive.Observable.Aliases" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Translator8.Scaffold\Translator8.Scaffold.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="9.0.100" />
-    <PackageReference Include="FSharp.Idioms" Version="1.4.24" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.14" />
-    <PackageReference Include="System.Reactive" Version="6.0.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Translator.Scaffold\Translator.Scaffold.csproj" />
-  </ItemGroup>
-
 
 </Project>

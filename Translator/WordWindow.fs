@@ -23,6 +23,7 @@ type WordWindow () as this =
             this.tbEnglish.Text <- WordOperators.neatEnglish(this.tbEnglish.Text)
             this.tbChinese.Text <- WordOperators.neatChinese(this.tbChinese.Text)
         )
+
         this.btnUpdateDatabase.Click.Add(fun _ ->
             let eng = WordOperators.neatEnglish(this.tbEnglish.Text)
             let chn = WordOperators.neatChinese(this.tbChinese.Text)
@@ -36,6 +37,7 @@ type WordWindow () as this =
             this.DialogResult <- WordOperators.updateDatabase(Singleton.repo, eng, chn);
             this.Close()
         )
+
     member this.InitialText (ls:string list) =
         match ls with
         | [en;cn] ->
