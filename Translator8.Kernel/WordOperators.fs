@@ -18,19 +18,21 @@ module WordOperators =
 
     let neatEnglish (eng:string) = Regex.Replace(eng.Trim(), @"\s+", " ")
 
-    let updateDatabase(repo:WordRepo,eng,chn) =
-        let word = new Word(English = eng, Chinese = chn)
+    //[<Obsolete("WordRepository")>]
+    //let updateDatabase(repo:WordRepo,eng,chn) =
+    //    let word = new Word(English = eng, Chinese = chn)
 
-        if String.IsNullOrWhiteSpace(chn) then
-            repo.delete(word.English)
-        else
-            repo.update(word)
+    //    if String.IsNullOrWhiteSpace(chn) then
+    //        repo.delete(word.English)
+    //    else
+    //        repo.update(word)
 
-        true
+    //    true
 
-    let updateDictionary(dic:WordDictionary,eng,chn) =
-        if String.IsNullOrWhiteSpace(chn) then
-            dic.delete(eng)
-        else
-            dic.update(eng,chn)
+    //[<Obsolete("WordRepository")>]
+    //let updateDictionary(dic:WordDictionary,eng,chn) =
+    //    if String.IsNullOrWhiteSpace(chn) then
+    //        dic.delete(eng)
+    //    else
+    //        dic.update(eng,chn)
         

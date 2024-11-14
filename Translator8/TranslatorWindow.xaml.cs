@@ -75,7 +75,7 @@ namespace Translator8
             {
                 var olds = Translation.keepSelection(sentance.PhraseItems);
                 App app = (App) Application.Current;
-                sentance.PhraseItems = Translation.Update(app.Words, sentance.Tokens, olds);
+                sentance.PhraseItems = Translation.Update(app.Repository.Words, sentance.Tokens, olds);
 
             }
 

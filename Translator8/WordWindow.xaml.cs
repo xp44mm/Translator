@@ -39,12 +39,12 @@ namespace Translator8
             App app = (App)Application.Current;
 
             if (String.IsNullOrEmpty(chn))
-                app.Words.delete(eng);
+                app.Repository.Words.delete(eng);
             else
-                app.Words.update(eng, chn);
+                app.Repository.Words.update(eng, chn);
 
             //修改永久数据库
-            this.DialogResult = WordOperators.updateDatabase(app.Repo, eng, chn);
+            this.DialogResult = app.Repository.updateDatabase(eng, chn);
             this.Close();
 
         }

@@ -3,7 +3,7 @@
 open System
 open System.Collections.Generic
 
-type WordDictionary()   =
+type WordDictionary() =
     inherit Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
 
     /// 新增或修改词条

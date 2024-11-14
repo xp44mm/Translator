@@ -20,6 +20,7 @@
     <Compile Include="TranslatorViewModel.fs" />
     <Compile Include="WordOperators.fs" />
     <Compile Include="AppOps.fs" />
+    <Compile Include="WordRepository.fs" />
   </ItemGroup>
 
   <ItemGroup>

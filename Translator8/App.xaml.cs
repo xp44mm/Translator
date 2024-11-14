@@ -21,20 +21,27 @@ namespace Translator8
     public partial class App : Application
     {
 
-        // 数据库源的内存表示
-        private readonly WordDictionary _words = new WordDictionary();
-        public WordDictionary Words
-        {
-            get { return _words; }
-            //set { unsaveDate = value; }
-        }
+        //// 数据库源的内存表示
+        //private readonly WordDictionary _words = new WordDictionary();
+        //public WordDictionary Words
+        //{
+        //    get { return _words; }
+        //    //set { unsaveDate = value; }
+        //}
+
+        //// 操作数据库的方法
+        //private readonly WordRepo _repo = new WordRepo();
+        //public WordRepo Repo
+        //{
+        //    get { return _repo; }
+        //    //set { unsaveDate = value; }
+        //}
 
         // 操作数据库的方法
-        private readonly WordRepo _repo = new WordRepo();
-        public WordRepo Repo
+        private readonly WordRepository _repository = new WordRepository();
+        public WordRepository Repository
         {
-            get { return _repo; }
-            //set { unsaveDate = value; }
+            get { return _repository; }
         }
 
 
@@ -43,18 +50,19 @@ namespace Translator8
             base.OnStartup(e);
             SynchronizationContext.SetSynchronizationContext(new DispatcherSynchronizationContext());
 
-            var startup = new TranslatorWindow();
-            AppOps.getWordsStream()
+            var mainWindow = new TranslatorWindow();
+            this.Repository
+                .getObservableWords()
                 .SubscribeOn(System.Reactive.Concurrency.TaskPoolScheduler.Default)
                 .ObserveOn(SynchronizationContext.Current ?? throw new ArgumentNullException())
                 .Synchronize()
-                .Do(word => this.Words.Add(word.English, word.Chinese))
+                .Do(word => this.Repository.Words.Add(word.English, word.Chinese))
             .Subscribe(
                 value => { },
                 err => { },
-                () => { startup.btnPaste.IsEnabled = true; }
+                () => { mainWindow.btnPaste.IsEnabled = true; }
                 );
-            startup.Show();
+            mainWindow.Show();
 
         }
 

@@ -1,4 +1,5 @@
 ﻿namespace Translator8.Kernel
+
 open System
 
 ///若干个单词(token)组成一个短语

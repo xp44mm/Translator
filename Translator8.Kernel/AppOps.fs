@@ -13,7 +13,7 @@ open Microsoft.EntityFrameworkCore
 open Translator8.Scaffold
 
 
-let getWordsStream () =
-    use db = new VocabularyDbContext()
+//let getWordsStream () =
+//    use db = new VocabularyDbContext()
 
-    db.Word.AsNoTracking().ToArrayAsync().ToObservable().SelectMany(fun arr -> arr |> Seq.ofArray)
+//    db.Word.AsNoTracking().ToArrayAsync().ToObservable().SelectMany(fun arr -> arr |> Seq.ofArray)
