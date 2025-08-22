@@ -1,17 +1,15 @@
 ﻿namespace Translator8.Kernel
 
+open System.Text.RegularExpressions
+open FSharp.Idioms.RegularExpressions
+
 //https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/character-classes-in-regular-expressions
 type Token(pos:int,lex:string) =
     member this.Position = pos
     member this.Lexeme = lex
-    //手工断开短语
-    member val IsStarted = false with get, set
 
-open FSharp.Idioms
-open FSharp.Idioms.ActivePatterns
-open FSharp.Idioms.RegularExpressions
-
-open System.Text.RegularExpressions
+    //手工断开短语obsolete
+    //member val IsStarted = false with get, set
 
 module Token =
 
@@ -51,22 +49,8 @@ module Token =
         |> Seq.unfold trimStart
         |> Seq.mapi(fun i s -> Token(i,s))
 
-    /////根据单词的强制起始标志断开单词数组
-    //let internal explode (tokens:Token []) =
-    //    let len = tokens.Length
-    //    [|
-    //        yield 0
-    //        //找到分组行的索引
-    //        for r in 1 .. len - 1 do
-    //            let row = tokens.[r]
-    //            if row.IsStarted then yield r
-    //        yield len
-    //    |]
-    //    |> Array.pairwise
-    //    |> Array.map(fun(s,f)-> tokens.[s..f])
-
     ///断句
-    let sentances (tokens : Token []) =
+    let sentences (tokens : Token []) =
         let final2 (tk1 : Token, tk2 : Token) =
             let s1 = tk1.Lexeme
             let s2 = tk2.Lexeme
@@ -106,6 +90,7 @@ module Token =
             | _ ->
                 let s, tokens = sent3 [] tokens
                 sents (s :: acc) tokens
+
         sents [] (tokens |> Array.toList)
         |> List.map (List.toArray)
         |> List.toArray
@@ -128,11 +113,24 @@ module Token =
                 .Replace("ﬄ","ffl")
 
         let input =
-            //行末的连字符
-            //Regex.Replace(input,@"([a-zA-Z])-\s*\n([a-zA-Z])","$1-$2")
+            //替换行末的连字符
             Regex.Replace(input, @"([a-zA-Z])-\s*\n([a-zA-Z])", "$1$2")
 
         let input =
-            //所有空白符转化为单个空格
+            //替换所有空白符转化为单个空格
             Regex.Replace(input,@"\s+", " ")
         input
+
+    /////根据单词的强制起始标志断开单词数组
+    //let internal explode (tokens:Token []) =
+    //    let len = tokens.Length
+    //    [|
+    //        yield 0
+    //        //找到分组行的索引
+    //        for r in 1 .. len - 1 do
+    //            let row = tokens.[r]
+    //            if row.IsStarted then yield r
+    //        yield len
+    //    |]
+    //    |> Array.pairwise
+    //    |> Array.map(fun(s,f)-> tokens.[s..f])

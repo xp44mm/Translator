@@ -11,10 +11,9 @@ module WordOperators =
         [
             for ln in Regex.Split(chn, @"\r?\n") do
                 let ln = ln.Trim()
-                if not <| String.IsNullOrWhiteSpace(ln) then yield ln
+                if not <| String.IsNullOrEmpty(ln) then yield ln
         ]
-        |> Seq.distinct
-        |> String.concat Environment.NewLine
+        |> Chinese.from
 
     let neatEnglish (eng:string) = Regex.Replace(eng.Trim(), @"\s+", " ")
 

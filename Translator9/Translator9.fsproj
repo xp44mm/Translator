@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>False</UseWindowsForms>
+		<SatelliteResourceLanguages>zh-Hans;en</SatelliteResourceLanguages>
+		<PublishDir>bin\$(MSBuildProjectName)\</PublishDir>
+		<CleanPublishFolder>true</CleanPublishFolder>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Page Remove="App.xaml" />
+	  <Page Remove="PhraseBorder.xaml" />
+	  <Page Remove="SentanceTextBlock.xaml" />
+	  <Page Remove="TranslatorWindow.xaml" />
+	  <Page Remove="WordWindow.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="App.xaml" />
+	  <EmbeddedResource Include="PhraseBorder.xaml" />
+	  <EmbeddedResource Include="SentanceTextBlock.xaml" />
+	  <EmbeddedResource Include="TranslatorWindow.xaml" />
+	  <EmbeddedResource Include="WordWindow.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Compile Include="Config.fs" />
+		<Compile Include="SentencePhraseViewModel.fs" />
+		<Compile Include="XamlLoader.fs" />
+		<Compile Include="PhraseBorder.fs" />
+		<Compile Include="SentanceTextBlock.fs" />
+		<Compile Include="PhrasesWrapPanel.fs" />
+		<Compile Include="WordWindow.fs" />
+		<Compile Include="TranslatorWindow.fs" />
+		<Compile Include="Program.fs" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="FSharp.Control.Reactive" Version="6.1.2" />
+		<PackageReference Include="MahApps.Metro" Version="2.4.10" />
+		<PackageReference Include="System.Reactive" Version="6.0.1" />
+		<PackageReference Include="System.Speech" Version="9.0.8" />
+		<PackageReference Include="UnquotedJson" Version="1.0.27" />
+		<ProjectReference Include="..\Translator8.Kernel\Translator8.Kernel.fsproj" />
+		<ProjectReference Include="..\Translator8.Scaffold\Translator8.Scaffold.csproj" />
+		<PackageReference Update="FSharp.Core" Version="9.0.303" />
+	</ItemGroup>
+
+</Project>

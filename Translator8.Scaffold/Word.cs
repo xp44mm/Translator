@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Translator8.Scaffold;
 
 public partial class Word
 {
     [Key]
-    public string English { get; set; } = null!;
+    [Required]
+    public string English { get; set; } = string.Empty;
 
-    public string Chinese { get; set; } = null!;
+    [Required]
+    public string Chinese { get; set; } = string.Empty;
 }

@@ -1,0 +1,21 @@
+<Border
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+    Margin="1"
+    Padding="2"
+    BorderBrush="DarkRed"
+    BorderThickness="1">
+    <StackPanel>
+        <TextBlock
+            Margin="0,2,0,2"
+            FontFamily="Calibri Light"
+            Foreground="LightGreen"
+            Tag="1" />
+        <ComboBox Visibility="Collapsed" />
+        <TextBlock
+            Margin="0,2,0,2"
+            Tag="2"
+            Visibility="Visible" />
+    </StackPanel>
+</Border>
