@@ -16,10 +16,14 @@ open Translator8.Kernel
 open Translator8.Scaffold
 open System.Reactive.Disposables
 open System.Reactive.Subjects
+open FSharp.ReactiveWpf
+open System.Reflection
 
 SynchronizationContext.SetSynchronizationContext(new DispatcherSynchronizationContext())
+let assy = Assembly.GetExecutingAssembly()
 
-let app = XamlLoader.loadXaml "App.xaml" :?> Application
+
+let app = XamlLoader.loadXaml assy "Translator9.App.xaml" :?> Application
 let repository = new WordRepository(Config.getConnectionString())
 let wordsAdded = new Subject<unit>()
 

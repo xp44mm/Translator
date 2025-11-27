@@ -12,7 +12,7 @@ let getConnectionString () =
         if File.Exists(configPath) then
             let json =
                 File.ReadAllText(configPath, Encoding.UTF8)
-                |> UnquotedJson.Json.parse
+                |> FSharp.RfcJson.JsonCompiler.compile
 
             json.["ConnectionStrings"].["VocabularyDb"].stringText
 

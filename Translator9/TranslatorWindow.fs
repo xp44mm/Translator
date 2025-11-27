@@ -25,6 +25,10 @@ open FSharp.Idioms
 open MahApps.Metro.Controls
 open Translator9.ViewModel
 open System.Speech.Synthesis
+open FSharp.ReactiveWpf
+open System.Reflection
+
+let assy = Assembly.GetExecutingAssembly()
 
 let updateSentences
     (sentencesListBox: ListBox)
@@ -62,7 +66,7 @@ let updateSentences
     )
 
 let create (repository: WordRepository, wordsAdded: Subject<unit>) =
-    let window = XamlLoader.loadXaml "TranslatorWindow.xaml" :?> MetroWindow
+    let window = XamlLoader.loadXaml assy "Translator9.TranslatorWindow.xaml" :?> MetroWindow
 
     let btnPaste = window.FindName("btnPaste") :?> Button
     let btnUpdateDict = window.FindName("btnUpdateDict") :?> Button

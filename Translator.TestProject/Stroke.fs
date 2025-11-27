@@ -25,12 +25,12 @@ type StrokeTest(output: ITestOutputHelper) =
     [<Fact
     //(Skip = "only once needed")
     >]
-    member _.``提取``() =
+    member _.``提取strokeJsonPath``() =
         let strokeJsonPath = @"D:\Application Data\崔安琪\中文词典\stroke.json"
 
         let json =
             File.ReadAllText(strokeJsonPath, Encoding.UTF8)
-            |> UnquotedJson.Json.parse
+            |> FSharp.RfcJson.JsonCompiler.compile
 
         let rows = [
             for a in json.elements do
@@ -59,3 +59,15 @@ type StrokeTest(output: ITestOutputHelper) =
         let path = strokeJsonPath.Split('.').[0] + ".tsv"
         File.WriteAllLines(path, content, Encoding.UTF8)
         output.WriteLine path
+
+    [<Fact
+    //(Skip = "only once needed")
+    >]
+    member _.``通用规范汉字表一级字表``() =
+        let srcPath = @"D:\Application Data\崔安琪\中文词典\通用规范汉字表一级字表.txt"
+        let h3500 =
+            File.ReadAllText(srcPath, Encoding.UTF8).Split('\n').[1].ToCharArray()
+            |> Set.ofArray
+
+        output.WriteLine (stringify h3500.Count)
+        //output.WriteLine (stringify h3500)

@@ -1,7 +1,7 @@
 ﻿namespace Translator8.Kernel
 
 open System.Text.RegularExpressions
-open FSharp.Idioms.RegularExpressions
+open FSharp.Idioms.ActivePatterns
 
 //https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/character-classes-in-regular-expressions
 type Token(pos:int,lex:string) =

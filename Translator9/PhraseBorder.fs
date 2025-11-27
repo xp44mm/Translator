@@ -11,13 +11,16 @@ open System.Windows
 open System.Windows.Controls
 open Translator8.Kernel
 open System.Collections.Generic
+open FSharp.ReactiveWpf
+open System.Reflection
+let assy = Assembly.GetExecutingAssembly()
 
 let getStackPanel (root: Border) = root.Child :?> StackPanel
 
 let getTextBlock1 (root: Border) =
     let _stackPanel = root |> getStackPanel
     let _textBlock1 = _stackPanel.Children.[0] :?> TextBlock
-    XamlLoader.verifyTag _textBlock1 "1"
+    //DependencyObject.verifyTag _textBlock1 "1"
     _textBlock1
 
 let getComboBox (root: Border) =
@@ -27,7 +30,7 @@ let getComboBox (root: Border) =
 let getTextBlock2 (root: Border) =
     let _stackPanel = root |> getStackPanel
     let _textBlock1 = _stackPanel.Children.[2] :?> TextBlock
-    XamlLoader.verifyTag _textBlock1 "2"
+    //DependencyObject.verifyTag _textBlock1 "2"
     _stackPanel.Children.[2] :?> TextBlock
 
 
@@ -53,7 +56,7 @@ let readSelection (root: FrameworkElement) =
 
 let create (phrase: Phrase) (items: string[]) (old: string option) =
 
-    let border = XamlLoader.loadXaml "PhraseBorder.xaml" :?> Border
+    let border = XamlLoader.loadXaml assy "Translator9.PhraseBorder.xaml" :?> Border
     let _comboBox = getComboBox border
     let _textBlock1 = getTextBlock1 border
     let _textBlock2 = getTextBlock2 border

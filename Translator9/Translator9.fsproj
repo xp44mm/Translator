@@ -2,12 +2,13 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows7.0</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>False</UseWindowsForms>
 		<SatelliteResourceLanguages>zh-Hans;en</SatelliteResourceLanguages>
 		<PublishDir>bin\$(MSBuildProjectName)\</PublishDir>
 		<CleanPublishFolder>true</CleanPublishFolder>
+		<ApplicationIcon>favicon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -30,9 +31,10 @@
 		<Content Include="appsettings.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+		<Content Include="favicon.ico" />
+		<Compile Include="DependencyObject.fs" />
 		<Compile Include="Config.fs" />
 		<Compile Include="SentencePhraseViewModel.fs" />
-		<Compile Include="XamlLoader.fs" />
 		<Compile Include="PhraseBorder.fs" />
 		<Compile Include="SentanceTextBlock.fs" />
 		<Compile Include="PhrasesWrapPanel.fs" />
@@ -43,13 +45,14 @@
 	
 	<ItemGroup>
 		<PackageReference Include="FSharp.Control.Reactive" Version="6.1.2" />
-		<PackageReference Include="MahApps.Metro" Version="2.4.10" />
-		<PackageReference Include="System.Reactive" Version="6.0.1" />
-		<PackageReference Include="System.Speech" Version="9.0.8" />
-		<PackageReference Include="UnquotedJson" Version="1.0.27" />
+		<PackageReference Include="FSharp.ReactiveWpf" Version="0.0.1" />
+		<PackageReference Include="FSharp.RfcJson" Version="0.0.2" />
+		<PackageReference Include="MahApps.Metro" Version="2.4.11" />
+		<PackageReference Include="System.Reactive" Version="6.1.0" />
+		<PackageReference Include="System.Speech" Version="10.0.0" />
 		<ProjectReference Include="..\Translator8.Kernel\Translator8.Kernel.fsproj" />
 		<ProjectReference Include="..\Translator8.Scaffold\Translator8.Scaffold.csproj" />
-		<PackageReference Update="FSharp.Core" Version="9.0.303" />
+		<PackageReference Update="FSharp.Core" Version="10.0.100" />
 	</ItemGroup>
 
 </Project>

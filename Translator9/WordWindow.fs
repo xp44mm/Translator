@@ -7,9 +7,12 @@ open System
 open System.Reactive.Subjects
 open System.Windows
 open System.Windows.Controls
+open FSharp.ReactiveWpf
+open System.Reflection
 
 let create (repository: WordRepository) =
-    let w = XamlLoader.loadXaml "WordWindow.xaml" :?> MetroWindow
+    let assy = Assembly.GetExecutingAssembly()
+    let w = XamlLoader.loadXaml assy "Translator9.WordWindow.xaml" :?> MetroWindow
     let tbEnglish = w.FindName("tbEnglish") :?> TextBox
     let tbChinese = w.FindName("tbChinese") :?> TextBox
     let btnNeat = w.FindName("btnNeat") :?> Button
