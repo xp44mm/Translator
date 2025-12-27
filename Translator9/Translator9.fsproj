@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net10.0-windows7.0</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>False</UseWindowsForms>
 		<SatelliteResourceLanguages>zh-Hans;en</SatelliteResourceLanguages>
@@ -32,7 +32,6 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Include="favicon.ico" />
-		<Compile Include="DependencyObject.fs" />
 		<Compile Include="Config.fs" />
 		<Compile Include="SentencePhraseViewModel.fs" />
 		<Compile Include="PhraseBorder.fs" />
@@ -45,7 +44,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="FSharp.Control.Reactive" Version="6.1.2" />
-		<PackageReference Include="FSharp.ReactiveWpf" Version="0.0.1" />
+		<PackageReference Include="FSharp.ReactiveWpf" Version="0.0.5" />
 		<PackageReference Include="FSharp.RfcJson" Version="0.0.2" />
 		<PackageReference Include="MahApps.Metro" Version="2.4.11" />
 		<PackageReference Include="System.Reactive" Version="6.1.0" />

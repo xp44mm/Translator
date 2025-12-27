@@ -41,7 +41,7 @@ let updateSentences
     sentencesListBox.Items.Clear()
 
     for tokens in sentences do
-        let view = tokens |> Tokens.text |> SentanceTextBlock.create // stc.Text
+        let view = tokens |> Tokens.text |> SentanceTextBlock.create
         sentencesListBox.Items.Add(view) |> ignore
 
     // 更新中英文对照详图
@@ -55,7 +55,6 @@ let updateSentences
                 Visibility = Visibility.Collapsed,
                 Background = Brushes.Transparent,
                 DataContext = {
-                    //index = i
                     sentence = tokens
                     dbVersion = dbVersion - 1
                 }
@@ -109,7 +108,7 @@ let create (repository: WordRepository, wordsAdded: Subject<unit>) =
         )
         .WithLatestFrom(dbVersion)
         .Subscribe(fun struct (sentences, dbVersion) ->
-            updateSentences (sentencesListBox) (phrasesStackPanel) (phraseIndex) (sentences) (dbVersion)
+            updateSentences sentencesListBox phrasesStackPanel phraseIndex sentences dbVersion
 
             // 选择零
             if not sentencesListBox.Items.IsEmpty then
