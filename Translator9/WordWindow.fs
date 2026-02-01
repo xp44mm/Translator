@@ -20,7 +20,7 @@ let create (repository: WordRepository) =
 
     btnNeat.Click.Add(fun _ ->
         tbEnglish.Text <- WordOperators.neatEnglish (tbEnglish.Text)
-        tbChinese.Text <- WordOperators.neatChinese (tbChinese.Text)
+        tbChinese.Text <- WordOperators.neatChinese (tbChinese.Text) |> Chinese.toItems |> String.concat "\r\n"
     )
 
     btnUpdateDatabase.Click.Add(fun _ ->

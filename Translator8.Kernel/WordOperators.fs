@@ -1,37 +1,19 @@
-﻿namespace Translator8.Kernel
+﻿module Translator8.Kernel.WordOperators
+//“编辑”对话框
 
 open System
 open System.Text.RegularExpressions
 
-open Translator8.Scaffold
+///整理中文
+let neatChinese(chn) =
+    [
+        for ln in Regex.Split(chn, @"\r?\n") do
+            let ln = ln.Trim()
+            if not <| String.IsNullOrEmpty(ln) then yield ln
+    ]
+    |> Chinese.from
 
-///“编辑”对话框
-module WordOperators =
-    let neatChinese(chn) =
-        [
-            for ln in Regex.Split(chn, @"\r?\n") do
-                let ln = ln.Trim()
-                if not <| String.IsNullOrEmpty(ln) then yield ln
-        ]
-        |> Chinese.from
+///整理英文
+let neatEnglish (eng:string) = Regex.Replace(eng.Trim(), @"\s+", " ")
 
-    let neatEnglish (eng:string) = Regex.Replace(eng.Trim(), @"\s+", " ")
-
-    //[<Obsolete("WordRepository")>]
-    //let updateDatabase(repo:WordRepo,eng,chn) =
-    //    let word = new Word(English = eng, Chinese = chn)
-
-    //    if String.IsNullOrWhiteSpace(chn) then
-    //        repo.delete(word.English)
-    //    else
-    //        repo.update(word)
-
-    //    true
-
-    //[<Obsolete("WordRepository")>]
-    //let updateDictionary(dic:WordDictionary,eng,chn) =
-    //    if String.IsNullOrWhiteSpace(chn) then
-    //        dic.delete(eng)
-    //    else
-    //        dic.update(eng,chn)
         

@@ -102,6 +102,7 @@ let create (repository: WordRepository, wordsAdded: Subject<unit>) =
         .DistinctUntilChanged()
         .Select(fun text -> Sentence.from text)
         .Do(fun _ ->
+            // todo: 使用WithlatestFrom可以确保
             //更新视图前，确保索引安全
             phraseIndex.OnNext -1
             sentencesListBox.SelectedIndex <- -1
@@ -128,7 +129,7 @@ let create (repository: WordRepository, wordsAdded: Subject<unit>) =
     // 切换句子短语根元素的可见性
     currentSentenceIndex
         .StartWith(-1)
-        .Do(fun _ -> phraseIndex.OnNext -1)
+        .Do(fun _ -> phraseIndex.OnNext -1)// todo: 使用WithlatestFrom可以确保
         .Buffer(2, 1)
         .Select(fun ls -> ls.[0], ls.[1])
         .Subscribe(fun (i, j) ->
