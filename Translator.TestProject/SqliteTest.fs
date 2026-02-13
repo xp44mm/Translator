@@ -7,7 +7,6 @@ open System.Text.RegularExpressions
 open Microsoft.Data.Sqlite
 
 open Xunit
-open Xunit.Abstractions
 
 open FSharp.Idioms.Literal
 open FSharp.xUnit

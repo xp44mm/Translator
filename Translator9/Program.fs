@@ -24,6 +24,8 @@ let assy = Assembly.GetExecutingAssembly()
 
 
 let app = XamlLoader.loadXaml assy "Translator9.App.xaml" :?> Application
+
+
 let repository = new WordRepository(Config.getConnectionString())
 let wordsAdded = new Subject<unit>()
 

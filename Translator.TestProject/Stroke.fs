@@ -4,21 +4,15 @@ open System
 open System.IO
 open System.Text
 open System.Text.RegularExpressions
+
 open Microsoft.Data.Sqlite
 
 open Xunit
-open Xunit.Abstractions
-
 open FSharp.xUnit
-open Translator8.Scaffold
-
-open System
-open System.IO
-open System.Text
-
 open FSharp.Idioms
 open FSharp.Idioms.Literal
 
+open Translator8.Scaffold
 
 type StrokeTest(output: ITestOutputHelper) =
 

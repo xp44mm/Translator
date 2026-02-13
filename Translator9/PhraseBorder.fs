@@ -20,7 +20,6 @@ let getStackPanel (root: Border) = root.Child :?> StackPanel
 let getTextBlock1 (root: Border) =
     let _stackPanel = root |> getStackPanel
     let _textBlock1 = _stackPanel.Children.[0] :?> TextBlock
-    //DependencyObject.verifyTag _textBlock1 "1"
     _textBlock1
 
 let getComboBox (root: Border) =
@@ -30,7 +29,6 @@ let getComboBox (root: Border) =
 let getTextBlock2 (root: Border) =
     let _stackPanel = root |> getStackPanel
     let _textBlock1 = _stackPanel.Children.[2] :?> TextBlock
-    //DependencyObject.verifyTag _textBlock1 "2"
     _stackPanel.Children.[2] :?> TextBlock
 
 

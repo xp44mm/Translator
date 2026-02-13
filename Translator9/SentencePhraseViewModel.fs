@@ -5,6 +5,5 @@ open System.Reactive.Subjects
 
 type SentencePhraseViewModel = {
     sentence: Token []
-    //index: int
     dbVersion: int
 }
