@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net10.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>        
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>False</UseWindowsForms>
 		<SatelliteResourceLanguages>zh-Hans;en</SatelliteResourceLanguages>
@@ -44,14 +44,14 @@
 	
 	<ItemGroup>
 		<PackageReference Include="FSharp.Control.Reactive" Version="6.1.2" />
-		<PackageReference Include="FSharp.ReactiveWpf" Version="0.0.11" />
-		<PackageReference Include="FSharp.RfcJson" Version="0.0.2" />
+		<PackageReference Include="FSharp.ReactiveWpf" Version="0.1.3" />
+		<PackageReference Include="FSharp.RfcJson" Version="0.0.3" />
 		<PackageReference Include="MahApps.Metro" Version="2.4.11" />
-		<PackageReference Include="System.Reactive" Version="6.1.0" />
-		<PackageReference Include="System.Speech" Version="10.0.2" />
+		<PackageReference Include="System.Reactive" Version="7.0.0" />
+		<PackageReference Include="System.Speech" Version="10.0.10" />
 		<ProjectReference Include="..\Translator8.Kernel\Translator8.Kernel.fsproj" />
 		<ProjectReference Include="..\Translator8.Scaffold\Translator8.Scaffold.csproj" />
-		<PackageReference Update="FSharp.Core" Version="10.0.102" />
+		<PackageReference Update="FSharp.Core" Version="10.1.302" />
 	</ItemGroup>
 
 </Project>
